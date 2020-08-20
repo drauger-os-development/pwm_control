@@ -1,6 +1,4 @@
 {
- "min": 45.0,
- "max": 100,
  "fan curve":{
 	"low":45.0,
  	"low-mid":55.0,
