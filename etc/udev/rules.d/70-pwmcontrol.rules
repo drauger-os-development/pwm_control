@@ -1,0 +1,4 @@
+ACTION=="add", SUBSYSTEM=="hwmon", KERNEL=="hwmon", RUN+="/bin/chgrp hwmon /sys/devices/virtual/thermal/thermal_zone0/mode"
+ACTION=="add", SUBSYSTEM=="hwmon", KERNEL=="hwmon", RUN+="/bin/chmod g+w /sys/devices/virtual/thermal/thermal_zone0/mode"
+ACTION=="add", SUBSYSTEM=="hwmon", KERNEL=="hwmon", RUN+="/bin/chgrp hwmon /sys/devices/platform/pwm-fan/hwmon/hwmon4/pwm1"
+ACTION=="add", SUBSYSTEM=="hwmon", KERNEL=="hwmon", RUN+="/bin/chmod g+w /sys/devices/virtual/thermal/thermal_zone0/mode"

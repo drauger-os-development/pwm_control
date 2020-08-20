@@ -1,0 +1,21 @@
+{
+ "min": 45.0,
+ "max": 100,
+ "fan curve":{
+	"low":45.0,
+ 	"low-mid":55.0,
+ 	"mid":65.0,
+ 	"mid-high":75.0,
+ 	"high":85.0,
+ 	"max":95.0
+ 	},
+ "speeds":{
+ 	"off":25,
+ 	"low": 75,
+ 	"low-mid":105,
+ 	"mid":125,
+ 	"mid-high":175,
+ 	"high":225,
+ 	"max":255
+ 	}
+}
