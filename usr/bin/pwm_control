@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+#  pwm_control
+#
+#  Copyright 2020 Thomas Castleman <contact@draugeros.org>
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#  MA 02110-1301, USA.
+#
+#
+"""Explain what this program does here!!!"""
+from __future__ import print_function
+from sys import stderr, version_info
+from sys import argv as ARGV
+from subprocess import check_call, Popen
+from os import path, kill, remove
+
+
+def __eprint__(*args, **kwargs):
+    """Make it easier for us to print to stderr"""
+    print(*args, file=stderr, **kwargs)
+
+
+VERSION = "0.0.1-alpha0"
+HELP = """pwm_control, Version %s
+Control PWM fan speed using CPU temps
+
+\t-d, --daemon\t\tFork to background and run as daemon
+\t-e, --edit-curve\tEdit fan curve (not implemented yet)
+\t-h, --help\t\tPrint this help dialog and exit
+\t-k, --kill\t\tKill a currently running daemon
+\t-v, --version\t\tPrint current version and exit""" % (VERSION)
+if version_info[0] == 2:
+    __eprint__("Please run with Python 3 as Python 2 is End-of-Life.")
+    exit(2)
+
+# get length of argv
+ARGC = len(ARGV)
+if ARGC <= 1:
+    exit(check_call(["/usr/share/pwm_control.py"]))
+else:
+    if ARGV[1] in ("-h", "--help"):
+        print(HELP)
+        exit(0)
+    elif ARGV[1] in ("-v", "--version"):
+        print(VERSION)
+        exit(0)
+    elif ARGV[1] in ("-d", "--daemon"):
+        if path.isfile("/etc/pwm_control/pid.flag"):
+            __eprint__("""ERROR: pwm_control process already running. Please
+kill it with `pwm_control -k' before starting another process""")
+        else:
+            process = Popen(["/usr/share/pwm_control.py"])
+            process = process.pid
+            with open("/etc/pwm_control/pid.flag", "w") as flag:
+                flag.write(str(pid))
+        exit(0)
+    elif ARGV[1] in ("-e", "--edit-curve"):
+        __eprint__("""ERROR: Function not yet defined. To edit your fan curve,
+edit /etc/pwm_control/settings.json""")
+        exit(1)
+    elif ARGV[1] in ("-k", "--kill"):
+        if path.isfile("/etc/pwm_control/pid.flag"):
+            __eprint__("""ERROR: no pwm_control process running.""")
+            exit(2)
+        else:
+            with open("/etc/pwm_control/pid.flag", "r") as flag:
+                pid = int(flag.read())
+            kill(pid, 15)
+            remove("/etc/pwm_control/pid.flag")
+            exit(0)
+    else:
+        __eprint__("ERROR: %s not recognized" % (ARGV[1]))
+        print(HELP)
+        exit(0)
