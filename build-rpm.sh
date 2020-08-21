@@ -31,7 +31,7 @@ sed -i.bak "s/VERSION =/VERSION = $VERSION/" usr/bin/pwm_control
 post=$(<DEBIAN/postinst.sh)
 postun=$(<DEBIAN/postrm.sh)
 builtin echo -e "%post\n$post\n\n%postun\n$postun\n" >> pwm-control.spec
-rpmbuild -ba --buildroot . pwm-control.spec
-rm -rf "$FOLDER"
+mkdir build
+rpmbuild -ba --buildroot "$PWD"/build pwm-control.spec
 mv --force usr/bin/pwm_control.bak usr/bin/pwm_control
 mv --force pwm-control.spec.bak pwm-control.spec
