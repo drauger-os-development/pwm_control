@@ -50,7 +50,7 @@ if version_info[0] == 2:
 # get length of argv
 ARGC = len(ARGV)
 if ARGC <= 1:
-    exit(check_call(["/usr/share/pwm_control.py"]))
+    exit(check_call(["/usr/share/pwm_control/pwm_control.py"]))
 else:
     if ARGV[1] in ("-h", "--help"):
         print(HELP)
