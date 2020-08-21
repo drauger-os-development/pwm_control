@@ -27,7 +27,7 @@ if [ $(grep "Version:" pwm-control.spec) == "Version:" ]; then
 else
 	VERSION=$(grep 'Version: ' pwm-control.spec | sed 's/Version: //g')
 fi
-sed -i.bak "s/VERSION = /VERSION = $VERSION/" usr/bin/pwm_contol
+sed -i.bak "s/VERSION =/VERSION = $VERSION/" usr/bin/pwm_contol
 rpmbuild -ba pwm-control.spec
 rm -rf "$FOLDER"
 mv --force usr/bin/pwm_control.bak usr/bin/pwm_control

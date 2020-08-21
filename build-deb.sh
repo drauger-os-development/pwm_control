@@ -5,7 +5,7 @@ if [ $(grep "Version:" DEBIAN/control) == "Version:" ]; then
 else
 	VERSION=$(grep 'Version: ' DEBIAN/control | sed 's/Version: //g')
 fi
-sed -i.bak "s/VERSION = /VERSION = $VERSION/" usr/bin/pwm_contol
+sed -i.bak "s/VERSION =/VERSION = $VERSION/" usr/bin/pwm_contol
 PAK=$(grep 'Package: ' DEBIAN/control | sed 's/Package: //g')
 ARCH=$(grep 'Architecture: ' DEBIAN/control | sed 's/Architecture: //g')
 FOLDER="$PAK\_$VERSION\_$ARCH"
