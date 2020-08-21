@@ -9,3 +9,7 @@ If you have a device this script works on with little to no modification that is
 # Requirements
  * `python3-psutil`
  
+ 
+# Supported Distros
+
+Currently, `pwm_control` supports Debian-based distros, but we are working on support for RPM-based distros as well.
