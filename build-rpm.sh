@@ -66,6 +66,6 @@ fi
 if [ -d srv ]; then
     cp -R srv "$FOLDER"/srv
 fi
-rpmbuild -ba --buildroot "$PWD"/build --target arm64 pwm-control.spec
+rpmbuild -ba --buildroot "$PWD"/build --target arm64 --sign pwm-control.spec
 mv --force usr/bin/pwm_control.bak usr/bin/pwm_control
 mv --force pwm-control.spec.bak pwm-control.spec
