@@ -1,0 +1,10 @@
+Package: pwm-control
+Version: 0.0.1-alpha0
+Maintainer: Thomas Castleman <contact@draugeros.org>
+Section: admin
+Architecture: all
+Priority: important
+Depends: python3 (>=3.6.7-1~18.04), systemd (>=237-3ubuntu10.24), python3-psutil (>=5.5.0)
+Description: Easily control PWM fans
+ Easily Control PWM fans using CPU temps and an easy to configure fan curve.
+
