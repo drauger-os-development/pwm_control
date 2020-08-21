@@ -20,14 +20,14 @@ Easily Control PWM fans using CPU temps and an easy to configure fan curve.
 #%doc ./README.md
 #%doc ./LICENSE
 
-%exclude
-/.git
-/DEBIAN
-/VERSION
-/LICENSE
-/README.md
-/.gitignore
-/build*
-/pwm-control.spec
-/*.bak
-/usr/bin/pwm_control.bak
+#%exclude
+#/.git
+#/DEBIAN
+#/VERSION
+#/LICENSE
+#/README.md
+#/.gitignore
+#/build*
+#/pwm-control.spec
+#/*.bak
+#/usr/bin/pwm_control.bak
