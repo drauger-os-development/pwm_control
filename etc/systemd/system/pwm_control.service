@@ -1,0 +1,16 @@
+[Unit]
+Description=pwm_control fan controller daemon
+After=basic.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=forking
+PIDFile=/etc/pwm_control/pid.flag
+Restart=always
+RestartSec=1
+User=
+ExecStart=/usr/bin/pwm_control --daemon
+ExecStop=/usr/bin/pwm_control --kill
+
+[Install]
+WantedBy=multi-user.target

@@ -32,3 +32,4 @@ if $(builtin echo "$userlist" | grep -qv "$username"); then
 else
 	builtin echo "User $username is already part of group hwmon."
 fi
+sed -i "s/User=/User=$username/" /etc/systemd/system/pwm_control.service
