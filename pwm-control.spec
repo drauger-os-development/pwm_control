@@ -30,4 +30,4 @@ Easily Control PWM fans using CPU temps and an easy to configure fan curve.
 #/build*
 #/pwm-control.spec
 #/*.bak
-#/usr/bin/pwm_control.bak
+/usr/bin/pwm_control.bak
