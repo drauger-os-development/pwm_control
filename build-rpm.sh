@@ -23,7 +23,7 @@
 #
 if [ $(grep "Version:" pwm-control.spec) == "Version:" ]; then
 	VERSION=$(<VERSION)
-	sed -i.bak "s/Version: /Version: $VERSION/" pwm-contol.spec
+	sed -i.bak "s/Version:/Version: $VERSION/" pwm-contol.spec
 else
 	VERSION=$(grep 'Version: ' pwm-control.spec | sed 's/Version: //g')
 fi

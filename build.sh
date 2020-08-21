@@ -23,8 +23,8 @@
 #
 # Fix Version numbers
 VERSION=$(<VERSION)
-sed -i.bak "s/Version: /Version: $VERSION/" pwm-contol.spec
-sed -i.bak "s/Version: /Version: $VERSION/" DEBIAN/control
+sed -i.bak "s/Version:/Version: $VERSION/" pwm-contol.spec
+sed -i.bak "s/Version:/Version: $VERSION/" DEBIAN/control
 sed -i.bak "s/VERSION = /VERSION = $VERSION/" usr/bin/pwm_contol
 # Move back up copies
 mv DEBIAN/control.bak control

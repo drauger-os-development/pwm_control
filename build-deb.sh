@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $(grep "Version:" DEBIAN/control) == "Version:" ]; then
 	VERSION=$(<VERSION)
-	sed -i.bak "s/Version: /Version: $VERSION/" DEBIAN/control
+	sed -i.bak "s/Version:/Version: $VERSION/" DEBIAN/control
 else
 	VERSION=$(grep 'Version: ' DEBIAN/control | sed 's/Version: //g')
 fi
