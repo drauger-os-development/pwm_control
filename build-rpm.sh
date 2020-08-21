@@ -23,11 +23,14 @@
 #
 if [ $(grep "Version:" pwm-control.spec) == "Version:" ]; then
 	VERSION=$(<VERSION)
-	sed -i.bak "s/Version:/Version: $VERSION/" pwm-contol.spec
+	sed -i.bak "s/Version:/Version: $VERSION/" pwm-control.spec
 else
 	VERSION=$(grep 'Version: ' pwm-control.spec | sed 's/Version: //g')
 fi
-sed -i.bak "s/VERSION =/VERSION = $VERSION/" usr/bin/pwm_contol
+sed -i.bak "s/VERSION =/VERSION = $VERSION/" usr/bin/pwm_control
+post=$(<DEBIAN/postinst.sh)
+postun=$(<DEBIAN/postrm.sh)
+builtin echo -e "%post\n$post\n\n%postun\n$postun\n" >> pwm-control.spec
 rpmbuild -ba pwm-control.spec
 rm -rf "$FOLDER"
 mv --force usr/bin/pwm_control.bak usr/bin/pwm_control

@@ -23,16 +23,12 @@
 #
 # Fix Version numbers
 VERSION=$(<VERSION)
-sed -i.bak "s/Version:/Version: $VERSION/" pwm-contol.spec
+sed -i.bak "s/Version:/Version: $VERSION/" pwm-control.spec
 sed -i.bak "s/Version:/Version: $VERSION/" DEBIAN/control
-sed -i.bak "s/VERSION =/VERSION = $VERSION/" usr/bin/pwm_contol
+sed -i.bak "s/VERSION =/VERSION = $VERSION/" usr/bin/pwm_control
 # Move back up copies
 mv DEBIAN/control.bak control
 mv usr/bin/pwm_control.bak pwm_control
-# Put postinst and postrm into the spec file
-post=$(<DEBIAN/postinst.sh)
-postun=$(<DEBIAN/postrm.sh)
-builtin echo -e "%post\n$post\n\n%postun\n$postun\n" >> pwm-control.spec
 # Build the DEB
 ./build-deb.sh
 # Build the RPM
