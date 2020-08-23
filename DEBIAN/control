@@ -1,7 +1,7 @@
 Package: pwm-control
 Version: 
 Maintainer: Thomas Castleman <contact@draugeros.org>
-Section: admin
+Section: misc
 Architecture: all
 Priority: important
 Depends: python3 (>=3.6.7-1~18.04), systemd (>=237-3ubuntu10.24), python3-psutil (>=5.5.0)
