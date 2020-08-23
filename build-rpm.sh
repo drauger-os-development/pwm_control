@@ -66,6 +66,10 @@ fi
 if [ -d srv ]; then
     cp -R srv "$FOLDER"/srv
 fi
-rpmbuild -ba --buildroot "$PWD"/build --target arm64 --sign pwm-control.spec
+rpmbuild -bb --buildroot "$PWD"/build --target noarch pwm-control.spec | tee output
+path=$(grep 'Wrote:' output | sed 's/Wrote: //')
+echo -e "\nSIGNING: $path\n"
+rm output
+rpm --addsign "$path"
 mv --force usr/bin/pwm_control.bak usr/bin/pwm_control
 mv --force pwm-control.spec.bak pwm-control.spec
