@@ -3,7 +3,7 @@
 #
 #  pwm_control.py
 #
-#  Copyright 2020 Thomas Castleman <contact@draugeros.org>
+#  Copyright 2022 Thomas Castleman <contact@draugeros.org>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -33,22 +33,21 @@ import json
 
 defaults = {
  "fan curve":{
-    "low":45.0,
-    "low-mid":55.0,
-    "mid":65.0,
-    "mid-high":75.0,
-    "high":85.0,
-    "max":95.0
+    "low": 45.0,
+    "low-mid": 55.0,
+    "mid": 65.0,
+    "mid-high": 75.0,
+    "high": 85.0,
+    "max": 95.0
     },
  "speeds":{
-    "off":25,
+    "off": 25,
     "low": 75,
-    "low-mid":105,
-    "mid":125,
-    "mid-high":175,
-    "high":225,
-    "max":255
-    }
+    "low-mid": 105,
+    "mid": 125,
+    "mid-high": 175,
+    "high": 225,
+    "max": 255
 }
 
 

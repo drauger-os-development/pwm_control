@@ -3,7 +3,7 @@
 #
 #  pwm_control
 #
-#  Copyright 2020 Thomas Castleman <contact@draugeros.org>
+#  Copyright 2022 Thomas Castleman <contact@draugeros.org>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ def __eprint__(*args, **kwargs):
     print(*args, file=stderr, **kwargs)
 
 
-VERSION = "0.0.1~alpha0"
+VERSION = "0.0.2~alpha0"
 HELP = """pwm_control, Version %s
 Control PWM fan speed using CPU temps
 
