@@ -48,6 +48,8 @@ defaults = {
     "mid-high": 175,
     "high": 225,
     "max": 255
+    },
+ "check_freq": 0.1
 }
 
 
@@ -111,11 +113,18 @@ try:
 except KeyError:
     fan_curve = defaults["fan curve"]
     eprint("WARNING: fan temp curve not set. Falling back to default.")
+
 try:
     speeds = data["speeds"]
 except KeyError:
     speeds = defaults["speeds"]
     eprint("WARNING: fan speed curve not set. Falling back to default.")
+
+try:
+    check_freq = float(data["check_freq"])
+except (KeyError, ValueError):
+    check_freq = defaults["check_freq"]
+    eprint("WARNING: check interval not set. Falling back to default.")
 
 # Make sure fans are working
 with open("/sys/devices/virtual/thermal/thermal_zone0/mode", "w") as toggle:
@@ -142,4 +151,4 @@ while True:
     average = average / sensors
     # Set fan state
     set_fan_speed(average, fan_curve, speeds)
-    sleep(0.1)
+    sleep(check_freq)

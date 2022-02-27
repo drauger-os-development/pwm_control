@@ -15,4 +15,6 @@
  	"mid-high": 175,
  	"high": 225,
  	"max": 255
+ 	},
+ "check_freq": 0.25
 }
