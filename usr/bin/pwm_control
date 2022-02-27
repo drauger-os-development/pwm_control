@@ -34,7 +34,7 @@ def __eprint__(*args, **kwargs):
     print(*args, file=stderr, **kwargs)
 
 
-VERSION =
+VERSION = "0.0.1~alpha0"
 HELP = """pwm_control, Version %s
 Control PWM fan speed using CPU temps
 
