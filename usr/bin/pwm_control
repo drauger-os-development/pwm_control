@@ -66,7 +66,7 @@ kill it with `pwm_control -k' before starting another process""")
             process = Popen(["/usr/share/pwm_control/pwm_control.py"])
             process = process.pid
             with open("/etc/pwm_control/pid.flag", "w") as flag:
-                flag.write(str(pid))
+                flag.write(str(process))
         exit(0)
     elif ARGV[1] in ("-e", "--edit-curve"):
         __eprint__("""ERROR: Function not yet defined. To edit your fan curve,
