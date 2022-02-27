@@ -63,7 +63,7 @@ else:
             __eprint__("""ERROR: pwm_control process already running. Please
 kill it with `pwm_control -k' before starting another process""")
         else:
-            process = Popen(["/usr/share/pwm_control.py"])
+            process = Popen(["/usr/share/pwm_control/pwm_control.py"])
             process = process.pid
             with open("/etc/pwm_control/pid.flag", "w") as flag:
                 flag.write(str(pid))
